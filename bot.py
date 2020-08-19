@@ -4,6 +4,8 @@ import random
 import pytz
 from datetime import datetime
 from threading import Thread
+from config import token
+
 
 bot = telebot.TeleBot(token=token)
 
