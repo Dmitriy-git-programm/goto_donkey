@@ -22,12 +22,6 @@ def start(message):
     bot.send_message(user, "🐴 Привет, я осел из головинки.")
 
 
-@bot.message_handler(commands=['scream'])
-def add_user(message):
-    user = message.chat.id
-    users.add(user)
-
-
 @bot.message_handler(commands=['stop'])
 def remove_user(message):
     user = message.chat.id
@@ -38,11 +32,11 @@ def remove_user(message):
 
 def spam():
     hour = (datetime.now(pytz.UTC).hour + 3) % 24
-    if 21 < hour < 5:
+    if 5 < hour < 21:
         while True:
             for user in users:
                 bot.send_voice(user, open(random.choice(screams), 'rb'))
-            time.sleep(random.randint(1800, 10800))
+            time.sleep(random.randint(900, 5400))
 
 
 def polling():
